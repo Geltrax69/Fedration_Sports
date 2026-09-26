@@ -1,0 +1,48 @@
+digraph FederationSports {
+  rankdir=LR;
+
+  User [label="User / Browser"];
+  Domain [label="Domain / Hostname Resolver"];
+  Public [label="React Public Site"];
+  Admin [label="React Federation Admin"];
+  SuperAdmin [label="React Super Admin"];
+  GoAPI [label="Go API"];
+  Auth [label="Auth + RBAC"];
+  Tenant [label="Tenant Context"];
+  RLS [label="PostgreSQL RLS"];
+  DB [label="PostgreSQL"];
+  Storage [label="Private Object Storage"];
+  Cache [label="Optional Redis Cache"];
+  Jobs [label="Background Jobs"];
+  Audit [label="Audit Log"];
+
+  User -> Domain;
+  Domain -> Public;
+  Domain -> Admin;
+  Domain -> SuperAdmin;
+
+  Public -> GoAPI;
+  Admin -> GoAPI;
+  SuperAdmin -> GoAPI;
+
+  GoAPI -> Auth;
+  GoAPI -> Tenant;
+  Tenant -> RLS;
+  GoAPI -> DB;
+  RLS -> DB;
+  GoAPI -> Storage;
+  GoAPI -> Cache;
+  GoAPI -> Jobs;
+  GoAPI -> Audit;
+  Jobs -> DB;
+  Jobs -> Storage;
+
+  Organization [label="Organization / Federation"];
+  Site [label="Site / Domain"];
+  District [label="District"];
+
+  Organization -> Site;
+  Organization -> District;
+  Site -> Public;
+  District -> Admin;
+}
