@@ -1,0 +1,24 @@
+digraph DataModel {
+  rankdir=TB;
+
+  Organization -> Site;
+  Site -> Domain;
+  Organization -> District;
+  Organization -> User;
+  District -> User;
+  Organization -> Registration;
+  District -> Registration;
+  Registration -> Player;
+  Registration -> Coach;
+  Registration -> Referee;
+  Registration -> Document;
+  Registration -> RegistrationEvent;
+  Organization -> Event;
+  Event -> Result;
+  Site -> News;
+  Site -> Notice;
+  Site -> Page;
+  Site -> Gallery;
+  Organization -> Official;
+  Organization -> AuditLog;
+}
